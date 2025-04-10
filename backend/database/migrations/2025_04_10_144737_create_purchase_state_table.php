@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('purchase_state', function (Blueprint $table) {
+        Schema::create('purchase_status', function (Blueprint $table) {
             $table->bigInteger('purchase_id')->unsigned();
-            $table->bigInteger('state_id')->unsigned();
-            $table->primary(['purchase_id', 'state_id']);
+            $table->bigInteger('status_id')->unsigned();
+            $table->primary(['purchase_id', 'status_id']);
             $table->foreign('purchase_id')->references('purchase_id')->on('purchase')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('state_id')->references('state_id')->on('state')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('status_id')->references('status_id')->on('status')->onUpdate('cascade')->onDelete('restrict');
             $table->datetimes();
         });
     }
